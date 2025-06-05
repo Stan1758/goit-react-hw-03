@@ -1,22 +1,28 @@
 import React from "react";
 import s from "./Contact.module.css";
-import { RiContactsFill } from "react-icons/ri";
-import { BsTelephoneFill } from "react-icons/bs";
+import { RiContactsLine } from "react-icons/ri";
+import { BsTelephone } from "react-icons/bs";
 
-function Contact({ name, number }) {
+function Contact({ id, name, number, onDelete }) {
   return (
-    <li className={s.list}>
-      <div className="div">
-        <p>
-          <RiContactsFill style={{ marginRight: "8px" }} />
+    <li className={s.item}>
+      <div className={s.wrapper}>
+        <span className={s.name}>
+          <RiContactsLine className={s.icon} />
           {name}
-        </p>
-        <p>
-          <BsTelephoneFill style={{ marginRight: "8px" }} />
+        </span>
+        <span className={s.number}>
+          <BsTelephone className={s.icon} />
           {number}
-        </p>
+        </span>
       </div>
-      <button className="btn">Delete</button>
+      <button
+        type="button"
+        className={s.deleteButton}
+        onClick={() => onDelete(id)}
+      >
+        Delete
+      </button>
     </li>
   );
 }
